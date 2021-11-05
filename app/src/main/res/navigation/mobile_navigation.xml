@@ -6,20 +6,30 @@
     app:startDestination="@+id/nav_home">
 
     <fragment
-        android:id="@+id/nav_home"
-        android:name="com.ximena.mfoodyapp.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/nav_especial"
+        android:name="com.ximena.mfoodyapp.Especial"
+        android:label="Especial"
+        tools:layout="@layout/fragment_especial" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.ximena.mfoodyapp.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_principios"
+        android:name="com.ximena.mfoodyapp.Principios"
+        android:label="Principios"
+        tools:layout="@layout/fragment_principios" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.ximena.mfoodyapp.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_proteinas"
+        android:name="com.ximena.mfoodyapp.Proteinas"
+        android:label="Proteinas"
+        tools:layout="@layout/fragment_proteinas" />
+    <fragment
+        android:id="@+id/nav_sopas"
+        android:name="com.ximena.mfoodyapp.Sopas"
+        android:label="Sopas"
+        tools:layout="@layout/fragment_sopas" />
+    <fragment
+        android:id="@+id/nav_frios"
+        android:name="com.ximena.mfoodyapp.Frios"
+        android:label="Frios"
+        tools:layout="@layout/fragment_frios" />
 </navigation>

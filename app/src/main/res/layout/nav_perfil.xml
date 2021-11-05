@@ -5,7 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="160dp"
     android:padding="8dp"
-    android:background="#2979ff">
+    android:background="#2979ff"
+    tools:context=".Navigator">
+
+
 
     <TextView
         android:id="@+id/textView_usuario"
@@ -60,6 +63,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

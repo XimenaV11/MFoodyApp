@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_especial"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Especial del dia" />
+        <item
+            android:id="@+id/nav_principios"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Principios" />
+        <item
+            android:id="@+id/nav_proteinas"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Proteinas" />
+        <item
+            android:id="@+id/nav_sopas"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Sopas" />
+        <item
+            android:id="@+id/nav_frios"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Jugos,Postres,Helados" />
+    </group>
+</menu>
