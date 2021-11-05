@@ -9,7 +9,6 @@
     tools:context=".Navigator">
 
 
-
     <TextView
         android:id="@+id/textView_usuario"
         android:layout_width="match_parent"
