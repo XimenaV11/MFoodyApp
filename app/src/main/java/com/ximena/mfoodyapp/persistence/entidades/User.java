@@ -12,42 +12,45 @@ public class User {
 
     @PrimaryKey
     @NonNull
-    private EditText nombres;
+    private String id;
     @NonNull
-    private EditText apellidos;
+    private String nombres;
     @NonNull
-    private EditText correoR;
+    private String apellidos;
+    @NonNull
+    private String correoR;
 
-    public User(@NonNull EditText nombres, @NonNull EditText apellidos, @NonNull EditText correoR) {
+    public User(@NonNull String id,@NonNull String nombres, @NonNull String apellidos, @NonNull String correoR) {
+        this.id = id;
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.correoR = correoR;
     }
 
     @NonNull
-    public EditText getNombres() {
+    public String getNombres() {
         return nombres;
     }
 
-    public void setNombres(@NonNull EditText nombres) {
+    public void setNombres(@NonNull String nombres) {
         this.nombres = nombres;
     }
 
     @NonNull
-    public EditText getApellidos() {
+    public String getApellidos() {
         return apellidos;
     }
 
-    public void setApellidos(@NonNull EditText apellidos) {
+    public void setApellidos(@NonNull String apellidos) {
         this.apellidos = apellidos;
     }
 
     @NonNull
-    public EditText getCorreoR() {
+    public String getCorreoR() {
         return correoR;
     }
 
-    public void setCorreoR(@NonNull EditText correoR) {
+    public void setCorreoR(@NonNull String correoR) {
         this.correoR = correoR;
     }
 }

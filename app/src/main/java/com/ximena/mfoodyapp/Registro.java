@@ -78,14 +78,14 @@ public class Registro extends AppCompatActivity {
                                         FirebaseUser user = mAuth.getCurrentUser();
                                         Toast.makeText(getApplicationContext(), "Creacion de usuario exitosa.",
                                                 Toast.LENGTH_SHORT).show();
-                                        User usercreado=new User(nombres,apellidos,correoR);
-                                        db.collection("users").add(usercreado)
+                                        User userCreado=new User(user.getUid(),nombres.getText().toString(),apellidos.getText().toString(),correoR.getText().toString());
+                                        db.collection("users").add(userCreado)
                                                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                             @Override
                                             public void onSuccess(DocumentReference documentReference) {
                                                 Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                                                Intent registrar = new Intent(Registro.this, MainActivity.class);
-                                                startActivity(registrar);
+                                                Intent login = new Intent(Registro.this, MainActivity.class);
+                                                startActivity(login);
                                                 Toast.makeText(getApplicationContext(), "Creacion de coleccion exitosa.",
                                                         Toast.LENGTH_SHORT).show();
                                             }
