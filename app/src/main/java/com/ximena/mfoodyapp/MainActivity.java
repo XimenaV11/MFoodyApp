@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText correoInicio;
     private EditText contraseñaInicio;
     private Button mButtonLogin;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         mAuth = FirebaseAuth.getInstance();
