@@ -23,9 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText correoInicio;
     private EditText contraseñaInicio;
     private Button mButtonLogin;
-
-    private String email = "";
-    private String contraseña = "";
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         mAuth = FirebaseAuth.getInstance();
@@ -39,9 +37,6 @@ public class MainActivity extends AppCompatActivity {
         mButtonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                email = correoInicio.getText().toString();
-                contraseña = contraseñaInicio.getText().toString();
-
                 if(!correoInicio.getText().toString().isEmpty() && !contraseñaInicio.getText().toString().isEmpty()){
                     iniciosesion();
                 }
