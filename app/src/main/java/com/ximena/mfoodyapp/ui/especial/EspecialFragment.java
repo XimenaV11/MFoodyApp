@@ -39,7 +39,6 @@ public class EspecialFragment extends Fragment {
         recyclerViewEspecial=view.findViewById(R.id.recyclerViewEsp);
         mData=new ArrayList<>();
         cargarLista();
-        mostrarDatos();
 
 
         especialViewModel =
@@ -65,19 +64,17 @@ public class EspecialFragment extends Fragment {
     }
     public void cargarLista(){
         mData=new ArrayList<>();
-        mData.add(new ItemListEspecial("Arroz con pollo", "arroz con pollo,papas a la francesa.", R.drawable.aconpollo));
-        mData.add(new ItemListEspecial("Arroz paisa 4", "arroz paisa, papas a la francesa.", R.drawable.apaisa));
-        mData.add(new ItemListEspecial("Sanchocho de gallina Blues", "gallina criolla.", R.drawable.ic_menu_camera));
-        mData.add(new ItemListEspecial("otra comida", "otra comida de prueba.", R.drawable.ic_menu_camera));
+        mData.add(new ItemListEspecial("Arroz con pollo", "arroz con pollo,papas a la francesa, ensalada y limonada.", R.drawable.aconpollo));
+        mData.add(new ItemListEspecial("Arroz paisa ", "arroz paisa, papas a la francesa,patacón, limonada", R.drawable.apaisa));
+        mData.add(new ItemListEspecial("Sanchocho de gallina Criolla", "Sancocho de gallina criolla, presa de pollo asada o sudada,ensalada,jugo de maracuyá.", R.drawable.sancocho_de_gallina));
+        mData.add(new ItemListEspecial("Bandeja Paisa", "Bandeja de paisa con frijoles,chorizo,huevo frito, tocino asado,arepa,arroz,limonada.", R.drawable.paisa));
 
         //AdapterEspecial adapter=new AdapterEspecial(getContext(),mData);
         //recyclerViewEspecial.setHasFixedSize(true);
         //recyclerViewEspecial.setLayoutManager(new LinearLayoutManager(getContext()));
         //recyclerViewEspecial.setAdapter(adapter);
     }
-    public void mostrarDatos(){
 
-    }
 
     @Override
     public void onDestroyView() {

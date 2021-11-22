@@ -6,23 +6,24 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_especial"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Especial del dia" />
+            android:icon="@drawable/restaurant_menu_black_48dp"
+            android:title="Especial del dia"
+            android:iconTint="#00bfa5"/>
         <item
             android:id="@+id/nav_principios"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/dinner_dining_black_48dp"
             android:title="Principios" />
         <item
             android:id="@+id/nav_proteinas"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/set_meal_black_48dp"
             android:title="Proteinas" />
         <item
             android:id="@+id/nav_sopas"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ramen_dining_black_48dp"
             android:title="Sopas" />
         <item
             android:id="@+id/nav_frios"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/icecream_black_48dp"
             android:title="Jugos,Postres,Helados" />
     </group>
 </menu>

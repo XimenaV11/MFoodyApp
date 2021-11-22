@@ -9,7 +9,8 @@ public class EspecialViewModel extends ViewModel {
 
     public EspecialViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is especial fragment");
+        mText.setValue("");
+
     }
 
     public LiveData<String> getText() {
