@@ -36,13 +36,11 @@ public class AdapterEspecial extends RecyclerView.Adapter<AdapterEspecial.ViewHo
     @NonNull
     @Override
     public ViewHolderEspecial onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        //=mInflater.inflate(R.layout.item_lists_view,parent,false );
-        //view.setOnClickListener(this);
-        //return new ViewHolderEspecial(view);
+
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.item_lists_view,parent,false);
         return new ViewHolderEspecial(view);
-        //return new ViewHolderEspecial(LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_especial,parent,false));
+
     }
     public void setOnClickListener(View.OnClickListener listener){
         this.listener=listener;
