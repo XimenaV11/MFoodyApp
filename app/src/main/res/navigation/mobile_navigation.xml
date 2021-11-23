@@ -33,4 +33,9 @@
         android:name="com.ximena.mfoodyapp.ui.frios.FriosFragment"
         android:label="Frios"
         tools:layout="@layout/fragment_frios" />
+    <fragment
+        android:id="@+id/nav_perfil"
+        android:name="com.ximena.mfoodyapp.ui.perfil.PerfilFragment"
+        android:label="Mi Perfil"
+        tools:layout="@layout/fragment_perfil" />
 </navigation>

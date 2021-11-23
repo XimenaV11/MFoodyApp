@@ -25,5 +25,9 @@
             android:id="@+id/nav_frios"
             android:icon="@drawable/icecream_black_48dp"
             android:title="Jugos,Postres,Helados" />
+        <item
+            android:id="@+id/nav_perfil"
+            android:icon="@drawable/account_circle_black_48dp"
+            android:title="Mi perfil" />
     </group>
 </menu>

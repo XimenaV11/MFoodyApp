@@ -52,13 +52,7 @@ public class EspecialFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         recyclerViewEspecial.setLayoutManager(linearLayoutManager);
 
-        final TextView textView = binding.textEspecial;
-        especialViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+
         return root;
 
     }
@@ -69,10 +63,6 @@ public class EspecialFragment extends Fragment {
         mData.add(new ItemListEspecial("Sanchocho de gallina Criolla", "Sancocho de gallina criolla, presa de pollo asada o sudada,ensalada,jugo de maracuyá.", R.drawable.sancocho_de_gallina));
         mData.add(new ItemListEspecial("Bandeja Paisa", "Bandeja de paisa con frijoles,chorizo,huevo frito, tocino asado,arepa,arroz,limonada.", R.drawable.paisa));
 
-        //AdapterEspecial adapter=new AdapterEspecial(getContext(),mData);
-        //recyclerViewEspecial.setHasFixedSize(true);
-        //recyclerViewEspecial.setLayoutManager(new LinearLayoutManager(getContext()));
-        //recyclerViewEspecial.setAdapter(adapter);
     }
 
 
