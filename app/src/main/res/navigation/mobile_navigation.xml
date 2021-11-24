@@ -6,6 +6,13 @@
     app:startDestination="@+id/nav_especial">
 
     <fragment
+        android:id="@+id/nav_inicio"
+        android:name="com.ximena.mfoodyapp.ui.inicio.InicioFragment"
+        android:label="Inicio"
+        tools:layout="@layout/fragment_inicio"
+        />
+
+    <fragment
         android:id="@+id/nav_especial"
         android:name="com.ximena.mfoodyapp.ui.especial.EspecialFragment"
         android:label="Especial"

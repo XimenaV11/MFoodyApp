@@ -1,5 +1,6 @@
 package com.ximena.mfoodyapp.ui.sopas;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,10 +15,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ximena.mfoodyapp.R;
 import com.ximena.mfoodyapp.databinding.FragmentEspecialBinding;
 import com.ximena.mfoodyapp.databinding.FragmentSopasBinding;
+import com.ximena.mfoodyapp.ui.DescripcionFragment;
 import com.ximena.mfoodyapp.ui.especial.AdapterEspecial;
 import com.ximena.mfoodyapp.ui.especial.EspecialViewModel;
 import com.ximena.mfoodyapp.ui.especial.ItemListEspecial;
@@ -48,12 +51,25 @@ public class SopasFragment extends Fragment {
         View root = binding.getRoot();
         recyclerViewSopas = binding.recyclerViewSopas;
         adapterEspecial = new AdapterEspecial(getContext(),mData,root);
+        adapterEspecial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Intent intent=new Intent(getContext(),DescripcionFragment.class);
+                //startActivity(intent);
+                Toast.makeText(getActivity(), "SELECCION "+mData.get(recyclerViewSopas.getChildAdapterPosition(v)).getNombre(), Toast.LENGTH_SHORT).show();
+            }
+        });
         recyclerViewSopas.setAdapter(adapterEspecial);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         recyclerViewSopas.setLayoutManager(linearLayoutManager);
 
 
         return root;
+    }
+    public void moveToDescription(ItemListEspecial item){
+        Intent intent=new Intent(getContext(), DescripcionFragment.class);
+        intent.putExtra("ItemListEspecial",item);
+        startActivity(intent);
     }
     public void cargarLista(){
         mData=new ArrayList<>();

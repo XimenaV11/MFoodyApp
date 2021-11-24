@@ -1,5 +1,6 @@
 package com.ximena.mfoodyapp.ui.especial;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +24,7 @@ import java.util.List;
 
 import com.ximena.mfoodyapp.R;
 import com.ximena.mfoodyapp.databinding.FragmentEspecialBinding;
+import com.ximena.mfoodyapp.ui.DescripcionFragment;
 
 
 public class EspecialFragment extends Fragment {
@@ -47,7 +50,17 @@ public class EspecialFragment extends Fragment {
         binding = FragmentEspecialBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         recyclerViewEspecial = binding.recyclerViewEsp;
-        adapterEspecial = new AdapterEspecial(getContext(),mData,root);
+        AdapterEspecial adapterEspecial = new AdapterEspecial(getContext(), mData, root);
+        adapterEspecial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //ntent intent=new Intent(getContext(),DescripcionFragment.class);
+                //startActivity(intent);
+                Toast.makeText(getActivity(), "SELECCION "+mData.get(recyclerViewEspecial.getChildAdapterPosition(v)).getNombre(), Toast.LENGTH_SHORT).show();
+                //+ mData.get(recyclerViewEspecial.getChildAdapterPosition(view)).getNombre()
+            }
+        });
+
         recyclerViewEspecial.setAdapter(adapterEspecial);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         recyclerViewEspecial.setLayoutManager(linearLayoutManager);
@@ -56,11 +69,16 @@ public class EspecialFragment extends Fragment {
         return root;
 
     }
+    //public void moveToDescription(ItemListEspecial item){
+      //  Intent intent=new Intent(getContext(),DescripcionFragment.class);
+      //  intent.putExtra("ItemListEspecial",item);
+        //startActivity(intent);
+    //}
     public void cargarLista(){
         mData=new ArrayList<>();
         mData.add(new ItemListEspecial("Arroz con pollo", "arroz con pollo,papas a la francesa, ensalada y limonada.", R.drawable.aconpollo));
         mData.add(new ItemListEspecial("Arroz paisa ", "arroz paisa, papas a la francesa,patacón, limonada", R.drawable.apaisa));
-        mData.add(new ItemListEspecial("Sanchocho de gallina Criolla", "Sancocho de gallina criolla, presa de pollo asada o sudada,ensalada,jugo de maracuyá.", R.drawable.sancocho_de_gallina));
+        mData.add(new ItemListEspecial("Sanchocho de gallina Criolla", "Sancocho de gallina criolla, presa de pollo asada o sudada,ensalada,limonada.", R.drawable.sancocho_de_gallina));
         mData.add(new ItemListEspecial("Bandeja Paisa", "Bandeja de paisa con frijoles,chorizo,huevo frito, tocino asado,arepa,arroz,limonada.", R.drawable.paisa));
 
     }

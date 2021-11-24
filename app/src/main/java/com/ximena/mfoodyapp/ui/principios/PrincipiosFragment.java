@@ -1,5 +1,6 @@
 package com.ximena.mfoodyapp.ui.principios;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,10 +15,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ximena.mfoodyapp.R;
 import com.ximena.mfoodyapp.databinding.FragmentEspecialBinding;
 import com.ximena.mfoodyapp.databinding.FragmentPrincipiosBinding;
+import com.ximena.mfoodyapp.ui.DescripcionFragment;
 import com.ximena.mfoodyapp.ui.especial.AdapterEspecial;
 import com.ximena.mfoodyapp.ui.especial.EspecialViewModel;
 import com.ximena.mfoodyapp.ui.especial.ItemListEspecial;
@@ -48,6 +51,14 @@ public class PrincipiosFragment extends Fragment {
         View root = binding.getRoot();
         recyclerViewPrincipios = binding.recyclerViewPrincipios;
         adapterEspecial = new AdapterEspecial(getContext(),mData,root);
+        adapterEspecial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Intent intent=new Intent(getContext(),DescripcionFragment.class);
+                //startActivity(intent);
+                Toast.makeText(getActivity(), "SELECCION "+mData.get(recyclerViewPrincipios.getChildAdapterPosition(v)).getNombre(), Toast.LENGTH_SHORT).show();
+            }
+        });
         recyclerViewPrincipios.setAdapter(adapterEspecial);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         recyclerViewPrincipios.setLayoutManager(linearLayoutManager);
@@ -55,11 +66,16 @@ public class PrincipiosFragment extends Fragment {
 
         return root;
     }
+    public void moveToDescription(ItemListEspecial item){
+        Intent intent=new Intent(getContext(), DescripcionFragment.class);
+        intent.putExtra("ItemListEspecial",item);
+        startActivity(intent);
+    }
     public void cargarLista(){
         mData=new ArrayList<>();
-        mData.add(new ItemListEspecial("Frijoles", "Frijoles,arroz,ensalada,patacon", R.drawable.frijoles));
+        mData.add(new ItemListEspecial("Frijoles", "Frijoles, con arroz,ensalada,patacon", R.drawable.frijoles));
         mData.add(new ItemListEspecial("Lentejas", "Lentejas,Maduras de platano,ensalada,arroz", R.drawable.lentejas));
-        mData.add(new ItemListEspecial("Spaguetti", "Spaguetti con salsas,arroz, ", R.drawable.spaguetti));
+        mData.add(new ItemListEspecial("Spaguetti", "Spaguetti con salsas,arroz,papas a la francesa ", R.drawable.spaguetti));
         mData.add(new ItemListEspecial("Mixto de verduras", "Mixto de verduras,papas a la francesa,arroz", R.drawable.verduras));
 
     }

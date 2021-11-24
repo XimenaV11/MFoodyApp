@@ -1,5 +1,6 @@
 package com.ximena.mfoodyapp.ui.proteinas;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,10 +15,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ximena.mfoodyapp.R;
 import com.ximena.mfoodyapp.databinding.FragmentEspecialBinding;
 import com.ximena.mfoodyapp.databinding.FragmentProteinasBinding;
+import com.ximena.mfoodyapp.ui.DescripcionFragment;
 import com.ximena.mfoodyapp.ui.especial.AdapterEspecial;
 import com.ximena.mfoodyapp.ui.especial.EspecialViewModel;
 import com.ximena.mfoodyapp.ui.especial.ItemListEspecial;
@@ -47,12 +50,25 @@ public class ProteinasFragment extends Fragment {
         View root = binding.getRoot();
         recyclerViewProteinas = binding.recyclerViewProteinas;
         adapterEspecial = new AdapterEspecial(getContext(),mData,root);
+        adapterEspecial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Intent intent=new Intent(getContext(),DescripcionFragment.class);
+                //startActivity(intent);
+                Toast.makeText(getActivity(), "SELECCION "+mData.get(recyclerViewProteinas.getChildAdapterPosition(v)).getNombre(), Toast.LENGTH_SHORT).show();
+            }
+        });
         recyclerViewProteinas.setAdapter(adapterEspecial);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         recyclerViewProteinas.setLayoutManager(linearLayoutManager);
 
 
         return root;
+    }
+    public void moveToDescription(ItemListEspecial item){
+        Intent intent=new Intent(getContext(), DescripcionFragment.class);
+        intent.putExtra("ItemListEspecial",item);
+        startActivity(intent);
     }
     public void cargarLista(){
         mData=new ArrayList<>();

@@ -25,7 +25,7 @@
             android:padding="10dp"
             app:cornerRadius="20dp"></LinearLayout>
 
-            <ImageView
+        <ImageView
                 android:id="@+id/imgItem"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
@@ -65,6 +65,8 @@
                 android:textStyle="bold" />
 
         </LinearLayout>
+
+
 
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,8 @@
 package com.ximena.mfoodyapp.ui.especial;
 
-public class ItemListEspecial {
+import java.io.Serializable;
+
+public class ItemListEspecial implements Serializable {
     private String Nombre;
     private String Descripcion;
     private int imagen;

@@ -1,11 +1,10 @@
 package com.ximena.mfoodyapp.ui.frios;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,13 +12,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ximena.mfoodyapp.R;
-import com.ximena.mfoodyapp.databinding.FragmentEspecialBinding;
 import com.ximena.mfoodyapp.databinding.FragmentFriosBinding;
+import com.ximena.mfoodyapp.ui.DescripcionFragment;
 import com.ximena.mfoodyapp.ui.especial.AdapterEspecial;
-import com.ximena.mfoodyapp.ui.especial.EspecialViewModel;
 import com.ximena.mfoodyapp.ui.especial.ItemListEspecial;
 
 import java.util.ArrayList;
@@ -47,12 +45,25 @@ public class FriosFragment extends Fragment {
         View root = binding.getRoot();
         recyclerViewFrios = binding.recyclerViewFrios;
         adapterEspecial = new AdapterEspecial(getContext(),mData,root);
+        adapterEspecial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Intent intent=new Intent(getContext(),DescripcionFragment.class);
+                //startActivity(intent);
+                Toast.makeText(getActivity(), "SELECCION "+mData.get(recyclerViewFrios.getChildAdapterPosition(v)).getNombre(), Toast.LENGTH_SHORT).show();
+            }
+        });
         recyclerViewFrios.setAdapter(adapterEspecial);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         recyclerViewFrios.setLayoutManager(linearLayoutManager);
 
 
         return root;
+    }
+    public void moveToDescription(ItemListEspecial item){
+        Intent intent=new Intent(getContext(), DescripcionFragment.class);
+        intent.putExtra("ItemListEspecial",item);
+        startActivity(intent);
     }
     public void cargarLista(){
         mData=new ArrayList<>();
