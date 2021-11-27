@@ -16,7 +16,6 @@ import android.widget.Toast;
 
 import com.ximena.mfoodyapp.R;
 import com.ximena.mfoodyapp.databinding.FragmentFriosBinding;
-import com.ximena.mfoodyapp.ui.DescripcionFragment;
 import com.ximena.mfoodyapp.ui.especial.AdapterEspecial;
 import com.ximena.mfoodyapp.ui.especial.ItemListEspecial;
 
@@ -60,16 +59,12 @@ public class FriosFragment extends Fragment {
 
         return root;
     }
-    public void moveToDescription(ItemListEspecial item){
-        Intent intent=new Intent(getContext(), DescripcionFragment.class);
-        intent.putExtra("ItemListEspecial",item);
-        startActivity(intent);
-    }
+
     public void cargarLista(){
         mData=new ArrayList<>();
-        mData.add(new ItemListEspecial("Jugos naturales en agua o leche", "", R.drawable.jugos));
-        mData.add(new ItemListEspecial("Helados", "", R.drawable.helados));
-        mData.add(new ItemListEspecial("Postres", " ", R.drawable.postres));
+        mData.add(new ItemListEspecial("Jugos naturales en agua o leche", "", R.drawable.jugos,"3500"));
+        mData.add(new ItemListEspecial("Helados", "", R.drawable.helados,"3000"));
+        mData.add(new ItemListEspecial("Postres", " ", R.drawable.postres,"3000"));
 
 
     }

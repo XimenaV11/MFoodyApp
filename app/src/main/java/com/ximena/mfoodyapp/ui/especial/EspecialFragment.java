@@ -1,12 +1,11 @@
 package com.ximena.mfoodyapp.ui.especial;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,17 +13,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.List;
-
 
 
 import com.ximena.mfoodyapp.R;
 import com.ximena.mfoodyapp.databinding.FragmentEspecialBinding;
-import com.ximena.mfoodyapp.ui.DescripcionFragment;
 
 
 public class EspecialFragment extends Fragment {
@@ -34,6 +29,7 @@ public class EspecialFragment extends Fragment {
     private EspecialViewModel especialViewModel;
     private FragmentEspecialBinding binding;
     private LayoutInflater mInflater;
+    private Context context;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -54,11 +50,24 @@ public class EspecialFragment extends Fragment {
         adapterEspecial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(getActivity(), "SELECCION "+mData.get(recyclerViewEspecial.getChildAdapterPosition(v)).getNombre(), Toast.LENGTH_SHORT).show();
+
+
+            }
+
+
+            //intent.putExtra("ItemListEspecial",item);
+                //intent.putExtra("nombre",item.getNombre());
+                //intent.putExtra("descripcion",item.getDescripcion());
+                //intent.putExtra("imagen",item.getImagen());
+                //intent.putExtra("precio",item.getPrecio());
+                //itemView.getContext().startActivity(intent);
+                //context.startActivity(intent);
                 //ntent intent=new Intent(getContext(),DescripcionFragment.class);
                 //startActivity(intent);
-                Toast.makeText(getActivity(), "SELECCION "+mData.get(recyclerViewEspecial.getChildAdapterPosition(v)).getNombre(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "SELECCION "+mData.get(recyclerViewEspecial.getChildAdapterPosition(v)).getNombre(), Toast.LENGTH_SHORT).show();
                 //+ mData.get(recyclerViewEspecial.getChildAdapterPosition(view)).getNombre()
-            }
+
         });
 
         recyclerViewEspecial.setAdapter(adapterEspecial);
@@ -76,10 +85,10 @@ public class EspecialFragment extends Fragment {
     //}
     public void cargarLista(){
         mData=new ArrayList<>();
-        mData.add(new ItemListEspecial("Arroz con pollo", "arroz con pollo,papas a la francesa, ensalada y limonada.", R.drawable.aconpollo));
-        mData.add(new ItemListEspecial("Arroz paisa ", "arroz paisa, papas a la francesa,patacón, limonada", R.drawable.apaisa));
-        mData.add(new ItemListEspecial("Sanchocho de gallina Criolla", "Sancocho de gallina criolla, presa de pollo asada o sudada,ensalada,limonada.", R.drawable.sancocho_de_gallina));
-        mData.add(new ItemListEspecial("Bandeja Paisa", "Bandeja de paisa con frijoles,chorizo,huevo frito, tocino asado,arepa,arroz,limonada.", R.drawable.paisa));
+        mData.add(new ItemListEspecial("Arroz con pollo", "arroz con pollo,papas a la francesa, ensalada y limonada.", R.drawable.aconpollo,"12.000"));
+        mData.add(new ItemListEspecial("Arroz paisa ", "arroz paisa, papas a la francesa,patacón, limonada", R.drawable.apaisa,"12.000"));
+        mData.add(new ItemListEspecial("Sanchocho de gallina Criolla", "Sancocho de gallina criolla, presa de pollo asada o sudada,ensalada,limonada.", R.drawable.sancocho_de_gallina,"15.000"));
+        mData.add(new ItemListEspecial("Bandeja Paisa", "Bandeja de paisa con frijoles,chorizo,huevo frito, tocino asado,arepa,arroz,limonada.", R.drawable.paisa,"15.000"));
 
     }
 

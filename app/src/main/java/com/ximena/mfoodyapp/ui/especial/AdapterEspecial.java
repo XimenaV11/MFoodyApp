@@ -1,5 +1,6 @@
 package com.ximena.mfoodyapp.ui.especial;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ximena.mfoodyapp.Descripcion;
 import com.ximena.mfoodyapp.R;
 
 import java.util.ArrayList;
@@ -84,8 +86,10 @@ public class AdapterEspecial extends RecyclerView.Adapter<AdapterEspecial.ViewHo
         private ImageView Imgn;
         private TextView Titulo;
         private TextView Descripcion;
+        private TextView Precio;
         public ConstraintLayout mainLayout;
         private OnItemClickListener itemListener;
+        private Context context;
 
         public ViewHolderEspecial(@NonNull View itemView) {
             super(itemView);
@@ -93,6 +97,7 @@ public class AdapterEspecial extends RecyclerView.Adapter<AdapterEspecial.ViewHo
             Titulo = itemView.findViewById(R.id.txtTitulo);
             Descripcion = itemView.findViewById(R.id.txtDescripcion);
             mainLayout = itemView.findViewById(R.id.containerEspecial);
+            Precio = itemView.findViewById(R.id.textPrecio);
 
         }
 
@@ -100,6 +105,24 @@ public class AdapterEspecial extends RecyclerView.Adapter<AdapterEspecial.ViewHo
             Imgn.setImageResource(item.getImagen());
             Titulo.setText(item.getNombre());
             Descripcion.setText(item.getDescripcion());
+            Precio.setText(item.getPrecio());
+            context=itemView.getContext();
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //itemListener.onItemClick(item);
+                    Intent intent=new Intent(context.getApplicationContext(), com.ximena.mfoodyapp.Descripcion.class);
+                    intent.putExtra("ItemListEspecial",item);
+                    //intent.putExtra("nombre",item.getNombre());
+                    //intent.putExtra("descripcion",item.getDescripcion());
+                    //intent.putExtra("imagen",item.getImagen());
+                    //intent.putExtra("precio",item.getPrecio());
+                    //itemView.getContext().startActivity(intent);
+                    context.startActivity(intent);/*
+
+                    */
+                }
+            });
 
 
 

@@ -4,9 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,13 +12,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ximena.mfoodyapp.R;
-import com.ximena.mfoodyapp.databinding.FragmentEspecialBinding;
 import com.ximena.mfoodyapp.databinding.FragmentSopasBinding;
-import com.ximena.mfoodyapp.ui.DescripcionFragment;
 import com.ximena.mfoodyapp.ui.especial.AdapterEspecial;
 import com.ximena.mfoodyapp.ui.especial.EspecialViewModel;
 import com.ximena.mfoodyapp.ui.especial.ItemListEspecial;
@@ -66,16 +61,12 @@ public class SopasFragment extends Fragment {
 
         return root;
     }
-    public void moveToDescription(ItemListEspecial item){
-        Intent intent=new Intent(getContext(), DescripcionFragment.class);
-        intent.putExtra("ItemListEspecial",item);
-        startActivity(intent);
-    }
+
     public void cargarLista(){
         mData=new ArrayList<>();
-        mData.add(new ItemListEspecial("Sopa de verduras", "Sopa de verduras con pollo", R.drawable.sopa_de_verduras));
-        mData.add(new ItemListEspecial("Sopa de pastas ", "Sopa de pastas con pollo", R.drawable.sopa_de_pasta));
-        mData.add(new ItemListEspecial("Sopa de mondongo", "Sopa de mondongo con pollo.", R.drawable.sopa_de_mondongo));
+        mData.add(new ItemListEspecial("Sopa de verduras", "Sopa de verduras con pollo", R.drawable.sopa_de_verduras,"3000"));
+        mData.add(new ItemListEspecial("Sopa de pastas ", "Sopa de pastas con pollo", R.drawable.sopa_de_pasta,"3000"));
+        mData.add(new ItemListEspecial("Sopa de mondongo", "Sopa de mondongo con pollo.", R.drawable.sopa_de_mondongo,"3000"));
 
     }
 
