@@ -43,7 +43,7 @@ public class FriosFragment extends Fragment {
         binding = FragmentFriosBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         recyclerViewFrios = binding.recyclerViewFrios;
-        adapterEspecial = new AdapterEspecial(getContext(),mData,root);
+        adapterEspecial = new AdapterEspecial(mData,getContext(), adapterEspecial.factura,root);
         adapterEspecial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

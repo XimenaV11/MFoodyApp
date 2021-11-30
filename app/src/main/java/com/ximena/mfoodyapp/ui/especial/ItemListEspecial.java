@@ -7,11 +7,14 @@ public class ItemListEspecial implements Serializable {
     private String Descripcion;
     private int imagen;
     private String Precio;
-    public ItemListEspecial(String nombre, String descripcion, int imagen,String precio) {
+
+
+    public ItemListEspecial(String nombre, String descripcion, int imagen, String precio) {
         Nombre = nombre;
         Descripcion = descripcion;
         this.imagen = imagen;
         Precio = precio;
+
     }
 
     public String getNombre() {
@@ -45,4 +48,6 @@ public class ItemListEspecial implements Serializable {
     public void setPrecio(String precio) {
         Precio = precio;
     }
+
+
 }

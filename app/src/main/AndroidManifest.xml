@@ -13,7 +13,12 @@
         android:theme="@style/Theme.MFoodyApp" >
         <activity
             android:name=".Descripcion"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Detalle Comida"/>
+        <activity
+            android:name=".ui.facturas.FacturasFragment"
+            android:exported="false"
+            android:label="Facturas"/>
         <activity
             android:name=".Navigator"
             android:exported="false"

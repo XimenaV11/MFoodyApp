@@ -1,9 +1,11 @@
 package com.ximena.mfoodyapp.ui.especial;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -11,28 +13,39 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.ximena.mfoodyapp.Descripcion;
 import com.ximena.mfoodyapp.R;
+import com.ximena.mfoodyapp.ui.facturas.FacturasFragment;
+import com.ximena.mfoodyapp.ui.facturas.FacturasItemList;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class AdapterEspecial extends RecyclerView.Adapter<AdapterEspecial.ViewHolderEspecial>implements View.OnClickListener {
-    private  ArrayList <ItemListEspecial> mData;
+    public  ArrayList <ItemListEspecial> mData;
+    public  ArrayList <FacturasItemList> factura;
+
+
 
     private Context context;
     private  View root;
+    Button btnvercarro;
+    Button carrito;
     //public ItemListener itemListener;
     private View.OnClickListener itemlistener;
     //private AdapterEspecial.OnItemClickListener itemListener;
 
-    public AdapterEspecial(Context context,ArrayList<ItemListEspecial> mData,View root) {
-        this.context=context;
-        this.mData=mData;
-        this.root=root;
 
-
-        //this.mInflater=LayoutInflater.from(context);
+    public AdapterEspecial(ArrayList<ItemListEspecial> mData, Context context,ArrayList<FacturasItemList> factura,  View root, Button btnvercarro,Button carrito, View.OnClickListener itemlistener) {
+        this.mData = mData;
+        this.factura = factura;
+        this.context = context;
+        this.root = root;
+        this.carrito=carrito;
+        this.btnvercarro = btnvercarro;
+        this.itemlistener = itemlistener;
     }
+
+
 
 
     public interface OnItemClickListener {
@@ -68,12 +81,45 @@ public class AdapterEspecial extends RecyclerView.Adapter<AdapterEspecial.ViewHo
     }}
 
     @Override
-    public void onBindViewHolder(final AdapterEspecial.ViewHolderEspecial holder,final int position) {
+    public void onBindViewHolder(final AdapterEspecial.ViewHolderEspecial holder, @SuppressLint("RecyclerView") final int position) {
         holder.binData(mData.get(position));
+        carrito.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (carrito.isSelected()==true){
+                    factura.add(holder.binData(mData.get(position)));
+
+                }else if (carrito.isSelected()==false){
+                    factura.remove(holder.binData(mData.get(position)));
+
+                }
 
 
+            }
+        });
+        btnvercarro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(context, FacturasFragment.class);
+                intent.putExtra("CarroCompras",(Serializable) factura);
+                context.startActivity(intent);
+
+            }
+        });
+
+        /*carrito.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                compras.add(mData.get(position));
+                Intent intent=new Intent (context, FacturasFragment.class);
+                intent.putExtra("CarroCompras", (Serializable)  compras);
+                context.startActivity(intent);
+            }
+        });*/
 
     }
+
 
 
 
@@ -87,9 +133,11 @@ public class AdapterEspecial extends RecyclerView.Adapter<AdapterEspecial.ViewHo
         private TextView Titulo;
         private TextView Descripcion;
         private TextView Precio;
+        ArrayList<FacturasItemList> factura;
         public ConstraintLayout mainLayout;
         private OnItemClickListener itemListener;
         private Context context;
+        public Button carrito;
 
         public ViewHolderEspecial(@NonNull View itemView) {
             super(itemView);
@@ -98,15 +146,18 @@ public class AdapterEspecial extends RecyclerView.Adapter<AdapterEspecial.ViewHo
             Descripcion = itemView.findViewById(R.id.txtDescripcion);
             mainLayout = itemView.findViewById(R.id.containerEspecial);
             Precio = itemView.findViewById(R.id.textPrecio);
+            carrito =itemView.findViewById(R.id.buttoncarrito);
+
 
         }
 
-        void binData(final ItemListEspecial item) {
+        FacturasItemList binData(final ItemListEspecial item) {
             Imgn.setImageResource(item.getImagen());
             Titulo.setText(item.getNombre());
             Descripcion.setText(item.getDescripcion());
             Precio.setText(item.getPrecio());
             context=itemView.getContext();
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -125,7 +176,7 @@ public class AdapterEspecial extends RecyclerView.Adapter<AdapterEspecial.ViewHo
             });
 
 
-
+            return null;
         }
 
     }

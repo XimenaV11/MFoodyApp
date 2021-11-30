@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MFoodyApp</string>
+    <string name="app_name">FoodyApp</string>
     <string name="title_activity_navigator">Navigator</string>
     <string name="navigation_drawer_open">Open</string>
     <string name="navigation_drawer_close">Close</string>

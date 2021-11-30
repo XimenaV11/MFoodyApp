@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.firestore.core.View;
 import com.ximena.mfoodyapp.databinding.FragmentDescripcionBinding;
@@ -19,6 +21,7 @@ public class Descripcion extends AppCompatActivity {
     TextView Precio;
     ImageView ImageDesc;
     TextView cantidadpedidos;
+    Button carrito;
     private ItemListEspecial object;
 
     //private PerfilViewModel perfilViewModel;
@@ -36,6 +39,7 @@ public class Descripcion extends AppCompatActivity {
         ImageDesc = findViewById(R.id.imageDespcription);
         Precio=findViewById(R.id.precioDetalle);
         cantidadpedidos=findViewById(R.id.cantidadpe);
+        carrito=findViewById(R.id.buttoncarrito);
 
 
         titulo_titulo.setText(element.getNombre());
@@ -44,7 +48,15 @@ public class Descripcion extends AppCompatActivity {
         Precio.setText(element.getPrecio());
         cantidadpedidos.setText(String.valueOf(cantidadpedidos));
 
+        carrito.setOnClickListener(new android.view.View.OnClickListener() {
+            @Override
+            public void onClick(android.view.View v) {
+                Toast.makeText(getApplicationContext(), "Añadido correctamente a tu carrito ", Toast.LENGTH_SHORT).show();
 
+            }
+
+
+        });
 
 
 
