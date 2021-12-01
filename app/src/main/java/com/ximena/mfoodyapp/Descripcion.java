@@ -3,6 +3,8 @@ package com.ximena.mfoodyapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -12,6 +14,11 @@ import android.widget.Toast;
 import com.google.firebase.firestore.core.View;
 import com.ximena.mfoodyapp.databinding.FragmentDescripcionBinding;
 import com.ximena.mfoodyapp.ui.especial.ItemListEspecial;
+import com.ximena.mfoodyapp.ui.facturas.FacturasFragment;
+import com.ximena.mfoodyapp.ui.facturas.FacturasItemList;
+
+import java.io.Serializable;
+import java.util.ArrayList;
 
 
 public class Descripcion extends AppCompatActivity {
@@ -22,7 +29,10 @@ public class Descripcion extends AppCompatActivity {
     ImageView ImageDesc;
     TextView cantidadpedidos;
     Button carrito;
+    Button btnvercarro;
+    Context context;
     private ItemListEspecial object;
+    public ArrayList<FacturasItemList> factura;
 
     //private PerfilViewModel perfilViewModel;
     //private FragmentDescripcionBinding binding;
@@ -40,6 +50,7 @@ public class Descripcion extends AppCompatActivity {
         Precio=findViewById(R.id.precioDetalle);
         cantidadpedidos=findViewById(R.id.cantidadpe);
         carrito=findViewById(R.id.buttoncarrito);
+        btnvercarro=findViewById(R.id.vercarro);
 
 
         titulo_titulo.setText(element.getNombre());
@@ -56,6 +67,15 @@ public class Descripcion extends AppCompatActivity {
             }
 
 
+        });
+        btnvercarro.setOnClickListener(new android.view.View.OnClickListener() {
+            @Override
+            public void onClick(android.view.View v) {
+                Intent intent=new Intent(Descripcion.this, FacturasFragment.class);
+                intent.putExtra("CarroCompras",(Serializable) factura);
+                startActivity(intent);
+
+            }
         });
 
 

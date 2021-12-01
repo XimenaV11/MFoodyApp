@@ -12,12 +12,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.ximena.mfoodyapp.R;
 import com.ximena.mfoodyapp.databinding.FragmentProteinasBinding;
 import com.ximena.mfoodyapp.ui.especial.AdapterEspecial;
 import com.ximena.mfoodyapp.ui.especial.ItemListEspecial;
+import com.ximena.mfoodyapp.ui.facturas.FacturasItemList;
 
 import java.util.ArrayList;
 
@@ -29,6 +31,10 @@ public class ProteinasFragment extends Fragment {
 
     private ProteinasViewModel proteinasViewModel;
     private FragmentProteinasBinding binding;
+    ArrayList<FacturasItemList> factura;
+    Button carrito;
+    Button btnvercarro;
+    private View.OnClickListener itemlistener;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -43,7 +49,7 @@ public class ProteinasFragment extends Fragment {
         binding = FragmentProteinasBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         recyclerViewProteinas = binding.recyclerViewProteinas;
-        adapterEspecial = new AdapterEspecial(getContext(),mData,root);
+        adapterEspecial = new AdapterEspecial(mData,getContext(),factura,root,carrito,btnvercarro,itemlistener);
         adapterEspecial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

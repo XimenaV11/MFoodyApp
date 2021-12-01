@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.ximena.mfoodyapp.R;
@@ -19,6 +20,7 @@ import com.ximena.mfoodyapp.databinding.FragmentSopasBinding;
 import com.ximena.mfoodyapp.ui.especial.AdapterEspecial;
 import com.ximena.mfoodyapp.ui.especial.EspecialViewModel;
 import com.ximena.mfoodyapp.ui.especial.ItemListEspecial;
+import com.ximena.mfoodyapp.ui.facturas.FacturasItemList;
 
 import java.util.ArrayList;
 
@@ -31,6 +33,10 @@ public class SopasFragment extends Fragment {
 
     private SopasViewModel sopasViewModel;
     private FragmentSopasBinding binding;
+    ArrayList<FacturasItemList> factura;
+    Button carrito;
+    Button btnvercarro;
+    private View.OnClickListener itemlistener;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -45,7 +51,7 @@ public class SopasFragment extends Fragment {
         binding = FragmentSopasBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         recyclerViewSopas = binding.recyclerViewSopas;
-        adapterEspecial = new AdapterEspecial(getContext(),mData,root);
+        adapterEspecial = new AdapterEspecial(mData,getContext(),factura,root,carrito,btnvercarro,itemlistener);
         adapterEspecial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

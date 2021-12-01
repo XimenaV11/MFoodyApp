@@ -83,7 +83,7 @@ public class AdapterEspecial extends RecyclerView.Adapter<AdapterEspecial.ViewHo
     @Override
     public void onBindViewHolder(final AdapterEspecial.ViewHolderEspecial holder, @SuppressLint("RecyclerView") final int position) {
         holder.binData(mData.get(position));
-        carrito.setOnClickListener(new View.OnClickListener() {
+       /* carrito.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (carrito.isSelected()==true){
@@ -96,16 +96,8 @@ public class AdapterEspecial extends RecyclerView.Adapter<AdapterEspecial.ViewHo
 
 
             }
-        });
-        btnvercarro.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(context, FacturasFragment.class);
-                intent.putExtra("CarroCompras",(Serializable) factura);
-                context.startActivity(intent);
+        });*/
 
-            }
-        });
 
         /*carrito.setOnClickListener(new View.OnClickListener() {
 

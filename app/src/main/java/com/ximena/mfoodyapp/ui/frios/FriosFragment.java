@@ -12,20 +12,27 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.ximena.mfoodyapp.R;
 import com.ximena.mfoodyapp.databinding.FragmentFriosBinding;
 import com.ximena.mfoodyapp.ui.especial.AdapterEspecial;
 import com.ximena.mfoodyapp.ui.especial.ItemListEspecial;
+import com.ximena.mfoodyapp.ui.facturas.FacturasItemList;
 
 import java.util.ArrayList;
 
 
 public class FriosFragment extends Fragment {
     private RecyclerView recyclerViewFrios;
-    private AdapterEspecial adapterEspecial;
-    private ArrayList<ItemListEspecial> mData =new ArrayList<>();
+    AdapterEspecial adapterEspecial;
+    ArrayList<ItemListEspecial> mData =new ArrayList<>();
+    ArrayList<FacturasItemList> factura;
+    Button carrito;
+    Button btnvercarro;
+    private View.OnClickListener itemlistener;
+
 
     private FriosViewModel friosViewModel;
     private FragmentFriosBinding binding;
@@ -43,7 +50,7 @@ public class FriosFragment extends Fragment {
         binding = FragmentFriosBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         recyclerViewFrios = binding.recyclerViewFrios;
-        adapterEspecial = new AdapterEspecial(mData,getContext(), adapterEspecial.factura,root);
+        adapterEspecial = new AdapterEspecial(mData,getContext(),factura,root,btnvercarro,carrito,itemlistener);
         adapterEspecial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
