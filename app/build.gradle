@@ -47,6 +47,8 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:28.4.1')
     implementation 'com.google.firebase:firebase-firestore:24.0.0'
     testImplementation 'junit:junit:4.+'
+    implementation 'com.cepheuen.elegant-number-button:lib:1.0.3'
+    implementation 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
 
     // Room components
     implementation "androidx.room:room-runtime:$rootProject.roomVersion"

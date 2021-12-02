@@ -143,7 +143,7 @@ public class AdapterEspecial extends RecyclerView.Adapter<AdapterEspecial.ViewHo
 
         }
 
-        FacturasItemList binData(final ItemListEspecial item) {
+            void binData(final ItemListEspecial item) {
             Imgn.setImageResource(item.getImagen());
             Titulo.setText(item.getNombre());
             Descripcion.setText(item.getDescripcion());
@@ -168,7 +168,7 @@ public class AdapterEspecial extends RecyclerView.Adapter<AdapterEspecial.ViewHo
             });
 
 
-            return null;
+
         }
 
     }

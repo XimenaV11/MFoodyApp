@@ -1,40 +1,50 @@
 package com.ximena.mfoodyapp.ui.facturas;
 
+import android.widget.TextView;
+
+import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
+
+import org.w3c.dom.Text;
+
 import java.io.Serializable;
 
 public class FacturasItemList implements Serializable {
-    private String NombreComida;
-    private String Cantidad;
-    private String Preciosub;
+    public TextView NombreComida;
+    public ElegantNumberButton Cantidad;
+    public TextView Preciosub;
 
-    public String getNombreComida() {
+    public FacturasItemList(TextView nombreComida, ElegantNumberButton cantidad, TextView preciosub) {
+        NombreComida = nombreComida;
+        Cantidad = cantidad;
+        Preciosub = preciosub;
+    }
+
+    public FacturasItemList(String toString) {
+
+    }
+
+    public TextView getNombreComida() {
         return NombreComida;
     }
 
-    public void setNombreComida(String nombreComida) {
+    public void setNombreComida(TextView nombreComida) {
         NombreComida = nombreComida;
     }
 
-    public String getCantidad() {
+    public ElegantNumberButton getCantidad() {
         return Cantidad;
     }
 
-    public void setCantidad(String cantidad) {
+    public void setCantidad(ElegantNumberButton cantidad) {
         Cantidad = cantidad;
     }
 
-    public String getPreciosub() {
+    public TextView getPreciosub() {
         return Preciosub;
     }
 
-    public void setPreciosub(String preciosub) {
+    public void setPreciosub(TextView preciosub) {
         Preciosub = preciosub;
-    }
-
-    public FacturasItemList(String nombreComida, String cantidad, String preciosub) {
-        NombreComida = nombreComida;
-        Cantidad = cantidad;
-        Preciosub = preciosub;
-
     }
 }
+

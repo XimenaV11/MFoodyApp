@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ximena.mfoodyapp.R;
@@ -30,7 +31,7 @@ public class FacturasFragment extends AppCompatActivity {
     private FacturasViewModel facturasViewModel;
     private FragmentFacturasBinding binding;
     //AdapterCompras adapterCompras;
-    RecyclerView facturas;
+    RecyclerView recyclerviewfacturas;
     TextView total;
     TextView titulo2;
     TextView precio2;
@@ -46,25 +47,34 @@ public class FacturasFragment extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //View view = inflater.inflate(R.layout.fragment_facturas, container, false);
         setContentView(R.layout.fragment_facturas);
-        FacturasItemList elements = (FacturasItemList) getIntent().getSerializableExtra("FacturasItemList");
+        //FacturasItemList elements = (FacturasItemList) getIntent().getSerializableExtra("CarroCompras");
 
         //facturasViewModel =
                 //new ViewModelProvider(this).get(FacturasViewModel.class);
 
        // factura= (ArrayList<FacturasItemList>)getIntent().getSerializableExtra("CarroCompras");
-        facturas = findViewById(R.id.recyclerViewCompras);
+        recyclerviewfacturas = findViewById(R.id.recyclerViewCompras);
         cantidad2=findViewById(R.id.textcantidad2);
         titulo2=findViewById(R.id.txtTitulo2);
         precio2=findViewById(R.id.textPrecio2);
-        
         total = findViewById(R.id.textTotalc);
+        //Bundle recibedatos=getIntent().getExtras();
+        String title;
+        String price;
+        String count;
        // titulo_titulo.setText(element.getNombre());
-        titulo2.setText(elements.getNombreComida());
+        /*titulo2.setText(elements.getNombreComida());
         cantidad2.setText(elements.getCantidad());
-        precio2.setText(elements.getPreciosub());
+        precio2.setText(elements.getPreciosub());*/
+        //titulo2.setText(recibedatos.getString("titulo"));
+        //cantidad2.setText(recibedatos.getString("cantidad"));
+        //precio2.setText(recibedatos.getString("precio"));
+        //total=(cantidad2*precio2);
         
-        adapterFacturas=new AdapterFacturas(factura,FacturasFragment.this,root,total);
-        facturas.setAdapter(adapterFacturas);
+        adapterFacturas=new AdapterFacturas(factura,FacturasFragment.this,root);
+        recyclerviewfacturas.setAdapter(adapterFacturas);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
+        recyclerviewfacturas.setLayoutManager(linearLayoutManager);
         //FacturasFragment.this,factura,carrito,total,root
 
     }

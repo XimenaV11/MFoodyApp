@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -21,15 +22,15 @@ public class AdapterFacturas extends RecyclerView.Adapter<AdapterFacturas.ViewHo
     ArrayList<FacturasItemList> factura;
     private Context context;
     private View root;
-    TextView total;
+
     //public ItemListener itemListener;
     //private View.OnClickListener itemlistener;
 
-    public AdapterFacturas(ArrayList<FacturasItemList> factura, Context context, View root,TextView total) {
+    public AdapterFacturas(ArrayList<FacturasItemList> factura, Context context, View root) {
         this.factura = factura;
         this.context = context;
         this.root = root;
-        this.total=total;
+
     }
 
     @Override
@@ -48,7 +49,7 @@ public class AdapterFacturas extends RecyclerView.Adapter<AdapterFacturas.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull AdapterFacturas.ViewHolderFacturas holder, int position) {
-
+        holder.binData(factura.get(position));
     }
 
     @Override
@@ -57,26 +58,30 @@ public class AdapterFacturas extends RecyclerView.Adapter<AdapterFacturas.ViewHo
     }
 
     public static class ViewHolderFacturas extends RecyclerView.ViewHolder {
-        private TextView Titulo2;
-        private TextView Cantidad;
-        private TextView Precio2;
+         TextView Titulo2;
+         TextView Cantidad;
+         TextView Precio2;
         public ConstraintLayout mainLayout;
+
+        public void setTitulo2(TextView titulo2) {
+            Titulo2 = titulo2;
+        }
 
         private Context context;
         public Button carrito;
 
         public ViewHolderFacturas(@NonNull View itemView) {
             super(itemView);
-            Titulo2 = itemView.findViewById(R.id.txtTitulo2);
-            Cantidad = itemView.findViewById(R.id.textcantidad2);
+            Titulo2 =(TextView)itemView.findViewById(R.id.txtTitulo2);
+            Cantidad = (TextView) itemView.findViewById(R.id.textcantidad2);
             mainLayout = itemView.findViewById(R.id.containerCompras);
-            Precio2 = itemView.findViewById(R.id.textPrecio2);
+            Precio2 =(TextView) itemView.findViewById(R.id.textPrecio2);
         }
 
         void binData(final FacturasItemList item2) {
-            Cantidad.setText(item2.getCantidad());
-            Titulo2.setText(item2.getNombreComida());
-            Precio2.setText(item2.getPreciosub());
+            Cantidad.setText((CharSequence) item2.getCantidad());
+            Titulo2.setText((CharSequence) item2.getNombreComida());
+            Precio2.setText((CharSequence) item2.getPreciosub());
             context = itemView.getContext();
         }
     }
